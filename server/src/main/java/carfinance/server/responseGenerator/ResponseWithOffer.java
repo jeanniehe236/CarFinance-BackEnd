@@ -1,4 +1,7 @@
-package carfinance.server;
+package carfinance.server.responseGenerator;
+
+import carfinance.server.offerGenerator.Offer;
+import carfinance.server.preprocessor.AnswerSheet;
 
 public class ResponseWithOffer extends Response{
 	private Offer[] offers;
@@ -16,7 +19,7 @@ public class ResponseWithOffer extends Response{
 		
 		return String.format("Congratulations! You've got %d offer%s "
 				+ " The interest rate is calculated for your purchase of %s %s %s-based car as %s %s. The annual payment%s generated "
-				+ "based on that interest rate along with the price of your car, your down payment and loan term.",
+				+ "based on that interest rate along with your loan term and loan amount after down payment.",
 				numOfOffers,
 				numOfOffers == 1 ? "!" : "s! The offers are sorted in increasing order by our recommendation.",
 				GrammarHelper.getArticle(carType), carType.toLowerCase().replace("_", " "), answersheet.getFuelType().toLowerCase(), 

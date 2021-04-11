@@ -1,6 +1,11 @@
-package carfinance.server;
+package carfinance.server.offerGenerator;
 import java.util.Arrays;
 import java.util.Map;
+
+import carfinance.server.calculator.MasterInterestRateRegulator;
+import carfinance.server.database.Catalogue;
+import carfinance.server.database.Product;
+import carfinance.server.preprocessor.AnswerSheet;
 
 public class OfferGenerator {
 	
@@ -15,7 +20,6 @@ public class OfferGenerator {
 			offers[i] = new Offer(products[i], interestAdjustment, answersheet.getLoan(), answersheet.getTerm());
 		}
 		
-		System.out.println("Got offers. Generating a response.");
 		Arrays.sort(offers);
 		
 		return offers;

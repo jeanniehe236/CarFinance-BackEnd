@@ -1,4 +1,4 @@
-package carfinance.server;
+package carfinance.server.responseGenerator;
 
 public class GrammarHelper {
 	public static String getArticle(String str) {

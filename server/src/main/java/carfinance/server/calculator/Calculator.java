@@ -1,4 +1,4 @@
-package carfinance.server;
+package carfinance.server.calculator;
 
 
 public class Calculator {

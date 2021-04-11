@@ -1,4 +1,4 @@
-package carfinance.server;
+package carfinance.server.database;
 
 import java.util.Map;
 import java.util.Set;

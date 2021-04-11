@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import carfinance.server.ChoiceCollector;
-import carfinance.server.ResponseGenerator;
-import carfinance.server.Response;
+import carfinance.server.responseGenerator.OptionsCollector;
+import carfinance.server.responseGenerator.Response;
+import carfinance.server.responseGenerator.ResponseGenerator;
 
 @RestController
 @CrossOrigin
 public class CalculatorRestController {
 	@GetMapping("/car-finance")
-	public Map<String, Set<String>> getChoices() {
-		return ChoiceCollector.getChoices();
+	public Map<String, Set<String>> getOptions() {
+		return OptionsCollector.getOptions();
 	}
 	
 	

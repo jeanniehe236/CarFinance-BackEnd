@@ -1,8 +1,11 @@
-package carfinance.server;
+package carfinance.server.responseGenerator;
+
+import carfinance.server.preprocessor.AnswerSheet;
 
 public class Response{
 	private AnswerSheet answersheet;
 	private String message;
+	
 	
 	public Response(AnswerSheet answersheet, String message) {
 		this.answersheet = answersheet;

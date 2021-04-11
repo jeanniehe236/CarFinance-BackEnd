@@ -1,4 +1,4 @@
-package carfinance.server;
+package carfinance.server.preprocessor;
 
 import java.util.Map;
 
@@ -18,7 +18,10 @@ public class Parser {
 	}
 	
 	public AnswerSheet parse(Map<String, String> params) {
-		return new AnswerSheet(parseStringInputs(params), parseIntegerInputs(params));
+		String[] stringInputs = parseStringInputs(params);
+		int[] integerInputs = parseIntegerInputs(params);
+		if (stringInputs != null && integerInputs != null) return new AnswerSheet(stringInputs, integerInputs);
+		else return null;
 	}
 	
 	private String[] parseStringInputs(Map<String, String> params) {
@@ -26,13 +29,11 @@ public class Parser {
 		for (int i = 0; i < nameOfRequiredStringInputs.length; i++) {
 			try {
 				res[i] = params.get(nameOfRequiredStringInputs[i]);
-				System.out.println("got" + res[i]);
 			} catch (Exception e){
 				System.out.println("Invalid input at: " + nameOfRequiredIntegerInputs[i]);
 				return null;
  			}
 		}
-		
 		return res;
 	}
 	
@@ -40,9 +41,7 @@ public class Parser {
 		int[] res = new int[nameOfRequiredIntegerInputs.length];
 		for (int i = 0; i < nameOfRequiredIntegerInputs.length; i++) {
 			try {
-				
 				res[i] = Integer.parseInt(params.get(nameOfRequiredIntegerInputs[i]));
-				System.out.println("got" + res[i]);
  				
 			} catch (Exception e){
 				System.out.println("Invalid input at: " + nameOfRequiredIntegerInputs[i]);

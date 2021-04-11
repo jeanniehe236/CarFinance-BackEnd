@@ -1,4 +1,7 @@
-package carfinance.server;
+package carfinance.server.offerGenerator;
+
+import carfinance.server.calculator.Calculator;
+import carfinance.server.database.Product;
 
 public class Offer extends Product implements Comparable<Offer>{
 	

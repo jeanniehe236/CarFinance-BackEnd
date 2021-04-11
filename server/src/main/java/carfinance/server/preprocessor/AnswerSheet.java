@@ -1,4 +1,4 @@
-package carfinance.server;
+package carfinance.server.preprocessor;
 
 public class AnswerSheet {
 	private String channel;
@@ -8,6 +8,7 @@ public class AnswerSheet {
 	private int term;
 	private int totCost;
 	private int downPayment;
+	
 	
 	public AnswerSheet(String[] choices, int[] inputValues) {
 		this.channel = choices[0];

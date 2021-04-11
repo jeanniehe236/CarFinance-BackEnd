@@ -1,4 +1,4 @@
-package carfinance.server;
+package carfinance.server.calculator;
 
 import java.util.HashMap;
 import java.util.Iterator;

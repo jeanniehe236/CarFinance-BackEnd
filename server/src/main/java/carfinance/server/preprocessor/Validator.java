@@ -1,4 +1,7 @@
-package carfinance.server;
+package carfinance.server.preprocessor;
+
+import carfinance.server.calculator.MasterInterestRateRegulator;
+import carfinance.server.database.Catalogue;
 
 public class Validator {
 	
@@ -26,7 +29,7 @@ public class Validator {
 	}
 	
 	private boolean numbersAreValid() {
-		return answers.getLoan() > 0 && answers.getTerm() > 0 & answers.getDownPayment() > 0 & answers.getTotCost() > 0;
+		return answers.getLoan() > 0 && answers.getTerm() > 0 & answers.getDownPayment() >= 0;
 	}
 }
 
