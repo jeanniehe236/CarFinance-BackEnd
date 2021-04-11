@@ -8,10 +8,26 @@ import carfinance.server.database.Catalogue;
 
 public class OptionsCollector{
 	
-	public static Map<String, Set<String>> getOptions() {
+	private Map<String, Set<String>> options;
+	
+	
+	public OptionsCollector() {
+		options = new MasterInterestRateRegulator().getCategories();
+		options.put("channels", new Catalogue().getChannels());
 		
-		Map<String, Set<String>> res = new MasterInterestRateRegulator().getCategories();
-		res.put("channels", new Catalogue().getChannels());
-		return res;
+	}
+	
+	public OptionsCollector(Catalogue catalogue, MasterInterestRateRegulator interestRateRegulator) {
+		options = interestRateRegulator.getCategories();
+		options.put("channels", catalogue.getChannels());
+	}
+	
+	
+	public Map<String, Set<String>> getOptions() {
+		return options;
+	}
+	
+	public Set<String> getOptions(String Key) {
+		return options.get(Key);
 	}
 }

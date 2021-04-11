@@ -10,9 +10,9 @@ import carfinance.server.preprocessor.Validator;
 
 public class ResponseGenerator {
 	
-	public static Response generateResponse(Map<String, String> params) {
+	public static Response generateResponse(Map<String, String> params, Validator validator) {
 		
-		AnswerSheet answersheet = new Validator(new Parser().parse(params)).getValidatedAnswerSheet();
+		AnswerSheet answersheet = validator.getValidatedAnswerSheet(new Parser().parse(params));
 		if (answersheet == null) {
 			return new Response(answersheet, "The answers you have provided seems invalid. Please note that only integers and the given choices are allowed and that the loan after down payment must be above 0 kr.");
 		} else {

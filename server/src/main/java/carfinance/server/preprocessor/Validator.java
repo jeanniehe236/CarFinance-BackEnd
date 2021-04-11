@@ -1,34 +1,42 @@
 package carfinance.server.preprocessor;
+import java.util.Map;
+import java.util.Set;
 
 import carfinance.server.calculator.MasterInterestRateRegulator;
 import carfinance.server.database.Catalogue;
+import carfinance.server.responseGenerator.OptionsCollector;
 
-public class Validator {
+public class Validator extends OptionsCollector{
 	
-	AnswerSheet answers;
+	private Map<String, Set<String>> options;
 	
-	public Validator(AnswerSheet answers) {
-		this.answers = answers;
+	public Validator() {
+		super();
 	}
 	
-	public AnswerSheet getValidatedAnswerSheet() {
-		if (channelIsValid() && carIsValid() && fuelIsValid() && numbersAreValid()) return this.answers;
+	public Validator(Catalogue catalogue, MasterInterestRateRegulator interestRateRegulator) {
+		options = interestRateRegulator.getCategories();
+		options.put("channels", catalogue.getChannels());
+	}
+
+	public AnswerSheet getValidatedAnswerSheet(AnswerSheet answers) {
+		if (channelIsValid(answers) && carIsValid(answers) && fuelIsValid(answers) && numbersAreValid(answers)) return answers;
 		else return null;
 	}
 	
-	private boolean channelIsValid() {
-		return (new Catalogue().getChannels().contains(answers.getChannel()));
+	private boolean channelIsValid(AnswerSheet answers) {
+		return getOptions("channels").contains(answers.getChannel());
 	}
 	
-	private boolean carIsValid() {
-		return (new MasterInterestRateRegulator().getCategories("carTypes").contains(answers.getCarType()));
+	private boolean carIsValid(AnswerSheet answers) {
+		return getOptions("carTypes").contains(answers.getCarType());
 	}
 	
-	private boolean fuelIsValid() {
-		return new MasterInterestRateRegulator().getCategories("fuelTypes").contains(answers.getFuelType());
+	private boolean fuelIsValid(AnswerSheet answers) {
+		return getOptions("fuelTypes").contains(answers.getFuelType());
 	}
 	
-	private boolean numbersAreValid() {
+	private boolean numbersAreValid(AnswerSheet answers) {
 		return answers.getLoan() > 0 && answers.getTerm() > 0 & answers.getDownPayment() >= 0;
 	}
 }

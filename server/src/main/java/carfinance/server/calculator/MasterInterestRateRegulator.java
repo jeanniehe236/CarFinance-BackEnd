@@ -18,6 +18,7 @@ public class MasterInterestRateRegulator {
 		this.interestRateAdjustments = Map.of(
 			"carTypes", Map.of("Old", 0.01, "New", 0.0),
 			"fuelTypes", Map.of("Diesel", 0.0, "Gas", 0.0, "Electronic", -0.02, "Hybrid", -0.02));
+	
 	}
 	
 	public double getInterestRateAdjustment(String categoryType, String category) {
@@ -39,13 +40,10 @@ public class MasterInterestRateRegulator {
 	
 	public Map<String, Set<String>> getCategories(){
 		Map<String, Set<String>> categories = new HashMap<>();
-		
-		for (Iterator<Entry<String, Map<String, Double>>> iterator = interestRateAdjustments.entrySet().iterator(); iterator.hasNext();) {
-			Entry<String, Map<String, Double>> entry = iterator.next();
-			categories.put((String) entry.getKey(), getCategories((String) entry.getKey()));
+		for (String key : interestRateAdjustments.keySet()) {
+			categories.put(key, getCategories(key));
 		}
 		return categories;
-		
 	}
 	
 }
