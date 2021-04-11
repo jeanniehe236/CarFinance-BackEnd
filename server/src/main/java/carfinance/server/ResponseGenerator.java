@@ -8,14 +8,14 @@ public class ResponseGenerator {
 		AnswerSheet answersheet = new Validator(new Parser().parse(params)).getValidatedAnswerSheet();
 		if (answersheet == null) {
 			System.out.println("invalid answers");
-			return new Response(answersheet);
+			return new Response(answersheet, "The answers you have provided seems invalid. Please note that only integers and the given choices are allowed.");
 		}
 		Offer[] offers = OfferGenerator.getOffers(answersheet);
 		if (offers.length == 0) {
 			System.out.println("no offers hm...");
-			return new Response(answersheet);
+			return new Response(answersheet, "Sorry, but there is no offer available for you");
 		}
-		else return new Response(offers, answersheet);
+		else return new ResponseWithOffer(answersheet, offers);
 	}
 	
 }
