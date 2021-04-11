@@ -6,21 +6,42 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class MasterInterestRateRegulator {
+/**
+ * @author jeanniehe
+ *
+ */
+public class InterestRateRegulator {
 	
 	private Map<String, Map<String, Double>> interestRateAdjustments;
 	
-	public MasterInterestRateRegulator(Map<String, Map<String, Double>> interestRateAdjustments) {
+	/**
+	 * The default constructor creating a map of two default interest rate adjustment categories:
+	 * Car type with + 0.01 interest rate for old cars, 0.0 for new cars
+	 * Fuel type with - 0.01 interest rate for electronic and hybrid, 0.01 for diesel and gas.
+	 */
+	public InterestRateRegulator() {
+		this.interestRateAdjustments = Map.of(
+			"carTypes", Map.of("Used", 0.01, "New", 0.0),
+			"fuelTypes", Map.of("Petrol", 0.0, "Diesel", 0.0, "Electrical", -0.02, "Hybrid", -0.02));
+	}
+	
+	/**
+	 * A constructor creating a interest rate regulator given a map with interest rate adjustment 
+	 * categories.
+	 * @param interestRateAdjustments: maps interest rate adjustment categories along with the
+	 * associated category values to an interest rate adjustment.
+	 */
+	public InterestRateRegulator(Map<String, Map<String, Double>> interestRateAdjustments) {
+		
 		this.interestRateAdjustments = interestRateAdjustments;
 	}
 	
-	public MasterInterestRateRegulator() {
-		this.interestRateAdjustments = Map.of(
-			"carTypes", Map.of("Old", 0.01, "New", 0.0),
-			"fuelTypes", Map.of("Diesel", 0.0, "Gas", 0.0, "Electronic", -0.02, "Hybrid", -0.02));
-	
-	}
-	
+	/**
+	 * 
+	 * @param categoryType
+	 * @param category
+	 * @return
+	 */
 	public double getInterestRateAdjustment(String categoryType, String category) {
 		return interestRateAdjustments.get(categoryType).get(category);
 	}

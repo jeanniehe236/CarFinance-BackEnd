@@ -3,21 +3,14 @@ package carfinance.server.responseGenerator;
 import java.util.Map;
 import java.util.Set;
 
-import carfinance.server.calculator.MasterInterestRateRegulator;
+import carfinance.server.calculator.InterestRateRegulator;
 import carfinance.server.database.Catalogue;
 
 public class OptionsCollector{
 	
 	private Map<String, Set<String>> options;
 	
-	
-	public OptionsCollector() {
-		options = new MasterInterestRateRegulator().getCategories();
-		options.put("channels", new Catalogue().getChannels());
-		
-	}
-	
-	public OptionsCollector(Catalogue catalogue, MasterInterestRateRegulator interestRateRegulator) {
+	public OptionsCollector(Catalogue catalogue, InterestRateRegulator interestRateRegulator) {
 		options = interestRateRegulator.getCategories();
 		options.put("channels", catalogue.getChannels());
 	}

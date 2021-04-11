@@ -2,21 +2,15 @@ package carfinance.server.preprocessor;
 import java.util.Map;
 import java.util.Set;
 
-import carfinance.server.calculator.MasterInterestRateRegulator;
+import carfinance.server.calculator.InterestRateRegulator;
 import carfinance.server.database.Catalogue;
 import carfinance.server.responseGenerator.OptionsCollector;
 
 public class Validator extends OptionsCollector{
 	
-	private Map<String, Set<String>> options;
-	
-	public Validator() {
-		super();
-	}
-	
-	public Validator(Catalogue catalogue, MasterInterestRateRegulator interestRateRegulator) {
-		options = interestRateRegulator.getCategories();
-		options.put("channels", catalogue.getChannels());
+	public Validator(Catalogue catalogue, InterestRateRegulator interestRateRegulator) {
+		super(catalogue, interestRateRegulator);
+		
 	}
 
 	public AnswerSheet getValidatedAnswerSheet(AnswerSheet answers) {

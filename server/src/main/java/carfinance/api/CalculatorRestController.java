@@ -12,20 +12,24 @@ import carfinance.server.responseGenerator.OptionsCollector;
 import carfinance.server.responseGenerator.Response;
 import carfinance.server.responseGenerator.ResponseGenerator;
 import carfinance.server.database.Catalogue;
+import carfinance.server.offerGenerator.OfferGenerator;
 import carfinance.server.preprocessor.Validator;
-import carfinance.server.calculator.MasterInterestRateRegulator;
+import carfinance.server.calculator.InterestRateRegulator;
 @RestController
 @CrossOrigin
 public class CalculatorRestController {
+	
 	private OptionsCollector optionsCollector;
 	private Validator validator;
+	private OfferGenerator offerGenerator;
 	
 	public CalculatorRestController() {
 		Catalogue catalogue = new Catalogue();
-		MasterInterestRateRegulator interestRateRegulator = new MasterInterestRateRegulator();
+		InterestRateRegulator interestRateRegulator = new InterestRateRegulator();
 		
 		optionsCollector = new OptionsCollector(catalogue, interestRateRegulator);
 		validator = new Validator(catalogue, interestRateRegulator);
+		offerGenerator = new OfferGenerator(catalogue, interestRateRegulator);
 	}
 	
 	@GetMapping("/car-finance")
@@ -36,6 +40,6 @@ public class CalculatorRestController {
 	
 	@GetMapping("/car-finance/get-offers")
 	public Response getResponse(@RequestParam Map<String,String> params){
-		return ResponseGenerator.generateResponse(params, validator);
+		return ResponseGenerator.generateResponse(params, validator, offerGenerator);
 	}
 }

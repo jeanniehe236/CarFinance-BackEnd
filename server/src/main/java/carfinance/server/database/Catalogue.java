@@ -11,6 +11,7 @@ public class Catalogue {
 	public Catalogue(Map<String, Product[]> products) {
 		this.products = products;
 	}
+	
 	public Catalogue() {
 		this.products = Map.of("Private_Consumer", 
 				new Product[]{
