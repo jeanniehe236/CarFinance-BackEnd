@@ -8,7 +8,9 @@ import carfinance.server.preprocessor.AnswerSheet;
 import carfinance.server.preprocessor.Parser;
 import carfinance.server.preprocessor.Validator;
 
-
+/**
+ * A response generator to generate a response to the user.
+ */
 public class ResponseGenerator {
 	
 	/***

@@ -5,8 +5,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 /**
- * @author jeanniehe
- *
+ * The interest rate adjustment calculator converting a map of interest
+ * rat factor options to an interest rate adjustment.
  */
 public class InterestRateRegulator {
 	
@@ -34,21 +34,37 @@ public class InterestRateRegulator {
 	}
 	
 	
-	public double getInterestRateAdjustment(Map<String, String> categories) {
+	/**
+	 * Computes and returns the interest rate adjustment for the given user inputs provided
+	 * as a map of categorical options.
+	 * @param selectedOptions: a map of category options mapping the interest rate factor category to the
+	 * 		  categorical option.
+	 * @return the corresponding interest rate adjustment.
+	 */
+	public double getInterestRateAdjustment(Map<String, String> selectedOptions) {
 		double res = 0;
-		for (Iterator<Entry<String, String>> iterator = categories.entrySet().iterator(); iterator.hasNext();) {
-			Entry<String, String> entry = iterator.next();
-			res += interestRateAdjustments.get(entry.getKey()).get(entry.getValue());
+		for (Iterator<Entry<String, String>> iterator = selectedOptions.entrySet().iterator(); iterator.hasNext();) {
+			Entry<String, String> selectedOption = iterator.next();
+			res += interestRateAdjustments.get(selectedOption.getKey()).get(selectedOption.getValue());
 		}
 		return res;
 	}
 	
+	/**
+	 * Returns a set of strings showing the name of the interest rate factor categories.
+	 */
 	public Set<String> getCategories(){
 		return interestRateAdjustments.keySet();
 	}
 	
-	public Set<String> getOptions(String categoryType) {
-		return interestRateAdjustments.get(categoryType).keySet();
+	/**
+	 * Fetches and returns a set of strings showing the available options within the 
+	 * given interest rate factor category.
+	 * @param category: the name of the interest rate factor category.
+	 * @return the names of the interest rate factor options within the requested category.
+	 */
+	public Set<String> getOptions(String category) {
+		return interestRateAdjustments.get(category).keySet();
 	}
 	
 	

@@ -21,14 +21,21 @@ public class Calculator {
 	public static double getAnnualPayment(double r, double p, int n) {	
 		
 		if (r != 0) {
-			//double factor = Math.pow(1+r, n);
-			//a = p * r * factor/ (factor -1);
+			
+			
+			try {
 			BigDecimal R = new BigDecimal(r);
+			 
 			BigDecimal P = new BigDecimal(p);
 			BigDecimal Factor = R.add(new BigDecimal(1)).pow(n);
 			BigDecimal Numerator = P.multiply(R).multiply(Factor);
 			BigDecimal Denominator = Factor.subtract(new BigDecimal(1.00));
 			return Numerator.divide(Denominator, 2, RoundingMode.HALF_UP).doubleValue();
+			} catch (Exception e) {
+				double factor = Math.pow(1+r, n);
+				double a = p * r * factor/ (factor -1);
+				return a * 100.0/100.0;
+			}
 		}
 		else return Math.round(p / n *100.0)/100.0;
 	}
