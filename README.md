@@ -16,8 +16,8 @@ java -jar carfinance-jh-copy.jar
 
 #### Note: Front-End can be found in: https://github.com/jeanniehe236/CarFinance-FrontEnd.git
 ##### Instructions for running the front-end application #####
-cd public \n
-npm install \n
+cd public \r
+npm install \n\r
 npm start \n
 
 ##### Instructions for frond-end code review #####
