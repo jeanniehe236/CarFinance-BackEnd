@@ -15,12 +15,12 @@ java -jar carfinance-jh-copy.jar
 
 
 #### Note: Front-End can be found in: https://github.com/jeanniehe236/CarFinance-FrontEnd.git
-# Instructions for running the application
+#### Instructions for running the application ####
 cd public
 npm install
 npm start
 
-### Instructions for code review
+#### Instructions for code review ####
 * front-end/src/screens/HomeScreen.js - the first page
 * fron-end/src/screens/ProductScreen.js - the second page
 * front-end/src/App.css - the style sheet with CSS
