@@ -2,7 +2,7 @@
 ## Instructions for running the application
 java -jar carfinance-jh-copy.jar
 
-## Instructions for code review ##
+## Instructions for code review
 * back-end/src/main/java/carfinance/api/ - the folder for the api
 * back-end/src/main/java/carfinance/server/ - the folder for the server application
 * back-end/src/main/java/carfinance/server/calculator/ - the folder for the classes responsible for annual payment and interest rate calculation
@@ -14,14 +14,13 @@ java -jar carfinance-jh-copy.jar
 * back-end/src/test/java/carfinance/ - the folder for the JUnit tests
 
 
-# Front-End: https://github.com/jeanniehe236/CarFinance-FrontEnd.git
-## Instructions for running the application
+## Front-End: https://github.com/jeanniehe236/CarFinance-FrontEnd.git
+### Instructions for running the application
 cd public
 npm install
 npm start
 
-## Instructions for code review ##
-### Front-End: ###
+### Instructions for code review
 * front-end/src/screens/HomeScreen.js - the first page
 * fron-end/src/screens/ProductScreen.js - the second page
 * front-end/src/App.css - the style sheet with CSS
