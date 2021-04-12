@@ -1,6 +1,6 @@
 # CarFinance
 ## Instructions for running the application ##
-### Front-End:####
+### Front-End:###
 cd public
 npm install
 npm start
