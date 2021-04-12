@@ -10,12 +10,12 @@ java -jar carfinance-jh-copy.jar
 * back-end/src/main/java/carfinance/server/responseGenerator/ - the folder for the classes responsible for generating the reponses to the client
 * back-end/src/main/java/carfinance/server/preprocessor/ - the folder for the classes responsible for parsing and validating client inputs.
 
-### JUnit-tests: ###
+### JUnit-tests:
 * back-end/src/test/java/carfinance/ - the folder for the JUnit tests
 
 
-## Front-End: https://github.com/jeanniehe236/CarFinance-FrontEnd.git
-### Instructions for running the application
+#### Note: Front-End can be found in: https://github.com/jeanniehe236/CarFinance-FrontEnd.git
+# Instructions for running the application
 cd public
 npm install
 npm start
