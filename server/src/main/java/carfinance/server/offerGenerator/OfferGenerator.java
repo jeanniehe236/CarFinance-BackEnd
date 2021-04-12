@@ -3,8 +3,6 @@ import java.util.Arrays;
 import java.util.Map;
 
 import carfinance.server.calculator.InterestRateRegulator;
-import carfinance.server.database.Catalogue;
-import carfinance.server.database.Product;
 import carfinance.server.preprocessor.AnswerSheet;
 
 public class OfferGenerator {
@@ -31,4 +29,5 @@ public class OfferGenerator {
 		
 		return offers;
 	}
+	
 }

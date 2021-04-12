@@ -12,7 +12,7 @@ public class Response{
 		this.message = message;
 	}
 	
-	public AnswerSheet getAnswersheet() {
+	public AnswerSheet getAnswerSheet() {
 		return this.answersheet;
 	}
 	

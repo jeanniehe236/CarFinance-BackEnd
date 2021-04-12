@@ -1,6 +1,4 @@
 package carfinance.server.calculator;
-
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -17,12 +15,12 @@ public class InterestRateRegulator {
 	/**
 	 * The default constructor creating a map of two default interest rate adjustment categories:
 	 * Car type with + 0.01 interest rate for old cars, 0.0 for new cars
-	 * Fuel type with - 0.01 interest rate for electronic and hybrid, 0.01 for diesel and gas.
+	 * Fuel type with - 0.01 interest rate for electronic and hybrid, 0.01 for diesel and petrol.
 	 */
 	public InterestRateRegulator() {
 		this.interestRateAdjustments = Map.of(
 			"carTypes", Map.of("Used", 0.01, "New", 0.0),
-			"fuelTypes", Map.of("Petrol", 0.0, "Diesel", 0.0, "Electrical", -0.02, "Hybrid", -0.02));
+			"fuelTypes", Map.of("Petrol", 0.0, "Diesel", 0.0, "Hybrid", -0.02, "Electrical", -0.02));
 	}
 	
 	/**
@@ -32,23 +30,9 @@ public class InterestRateRegulator {
 	 * associated category values to an interest rate adjustment.
 	 */
 	public InterestRateRegulator(Map<String, Map<String, Double>> interestRateAdjustments) {
-		
 		this.interestRateAdjustments = interestRateAdjustments;
 	}
 	
-	/**
-	 * 
-	 * @param categoryType
-	 * @param category
-	 * @return
-	 */
-	public double getInterestRateAdjustment(String categoryType, String category) {
-		return interestRateAdjustments.get(categoryType).get(category);
-	}
-	
-	public Set<String> getCategories(String categoryType) {
-		return interestRateAdjustments.get(categoryType).keySet();
-	}
 	
 	public double getInterestRateAdjustment(Map<String, String> categories) {
 		double res = 0;
@@ -59,12 +43,13 @@ public class InterestRateRegulator {
 		return res;
 	}
 	
-	public Map<String, Set<String>> getCategories(){
-		Map<String, Set<String>> categories = new HashMap<>();
-		for (String key : interestRateAdjustments.keySet()) {
-			categories.put(key, getCategories(key));
-		}
-		return categories;
+	public Set<String> getCategories(){
+		return interestRateAdjustments.keySet();
 	}
+	
+	public Set<String> getOptions(String categoryType) {
+		return interestRateAdjustments.get(categoryType).keySet();
+	}
+	
 	
 }

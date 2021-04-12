@@ -19,19 +19,18 @@ public class AnswerSheet {
 		this.totCost = inputValues[0];
 		this.downPayment = inputValues[1];
 		this.loan = inputValues[0] - inputValues[1];
-		this.term = inputValues[1];
+		this.term = inputValues[2];
 	}
 	
 	public String getChannel() {
 		return this.channel;
 	}
 
-	public String getFuelType() {
-		return fuelType;
-	}
-
 	public String getCarType() {
 		return carType;
+	}
+	public String getFuelType() {
+		return fuelType;
 	}
 
 	public int getLoan() {

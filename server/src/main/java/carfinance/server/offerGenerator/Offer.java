@@ -1,7 +1,6 @@
 package carfinance.server.offerGenerator;
 
 import carfinance.server.calculator.Calculator;
-import carfinance.server.database.Product;
 
 public class Offer extends Product implements Comparable<Offer>{
 	
@@ -13,10 +12,10 @@ public class Offer extends Product implements Comparable<Offer>{
 	}
 	
 
-	public Offer(Product product, double interestAdjustment, int presentValue, int term){
+	public Offer(Product product, double interestAdjustment, int loan, int term){
 		super(product.getName(), product.getBaseInterestRate());
 		this.interestRate = product.getBaseInterestRate() + interestAdjustment;
-		this.annualPayment = Calculator.getAnnualPayment(this.interestRate, presentValue, term);
+		this.annualPayment = Calculator.getAnnualPayment(this.interestRate, loan, term);
 	}
 	
 	public double getInterestRate() {
@@ -26,11 +25,10 @@ public class Offer extends Product implements Comparable<Offer>{
 	public double getAnnualPayment() {
 		return annualPayment;
 	}
-	
 
 	@Override
 	public int compareTo(Offer o) {
-		return (int) Math.round(getAnnualPayment() - o.getAnnualPayment());
+		return (int) Math.round((getAnnualPayment() - o.getAnnualPayment())*100);
 	}
 	
 }

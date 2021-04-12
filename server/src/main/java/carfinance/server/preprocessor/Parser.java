@@ -12,10 +12,6 @@ public class Parser {
 		this.nameOfRequiredIntegerInputs = new String[] {"tot-cost", "down-payment", "term"};	
 	}
 	
-	public Parser(String[] nameOfRequiredStrings, String[] nameOfRequiredIntegers) {
-		this.nameOfRequiredStringInputs = nameOfRequiredStrings;
-		this.nameOfRequiredIntegerInputs = nameOfRequiredIntegers;
-	}
 	
 	public AnswerSheet parse(Map<String, String> params) {
 		String[] stringInputs = parseStringInputs(params);

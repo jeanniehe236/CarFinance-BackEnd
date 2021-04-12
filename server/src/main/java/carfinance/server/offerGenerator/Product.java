@@ -1,4 +1,4 @@
-package carfinance.server.database;
+package carfinance.server.offerGenerator;
 
 public class Product {
 	
